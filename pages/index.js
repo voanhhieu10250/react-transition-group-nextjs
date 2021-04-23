@@ -1,7 +1,10 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import { useState } from "react";
+import { CSSTransition } from "react-transition-group";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const [state, setState] = useState(true);
   return (
     <div className={styles.container}>
       <Head>
@@ -10,12 +13,21 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <CSSTransition
+          in={state}
+          // timeout={1000}
+          timeout={{ exit: 1000, appear: 2000, enter: 2000 }}
+          classNames="testing"
+          unmountOnExit={true}
+          appear={true}
+        >
+          <h1 className={styles.title} onClick={() => setState(false)}>
+            Welcome to
+          </h1>
+        </CSSTransition>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
+        <p className={styles.description} onClick={() => setState(true)}>
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
@@ -56,10 +68,10 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  )
+  );
 }

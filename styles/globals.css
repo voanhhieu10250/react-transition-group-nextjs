@@ -14,3 +14,35 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.testing-exit {
+  opacity: 1;
+}
+.testing-exit-active {
+  opacity: 0;
+  transition: opacity 1s;
+}
+.testing-exit-done {
+}
+
+.testing-enter {
+  transform: scale(0.1);
+}
+.testing-enter-active {
+  transform: scale(1);
+  transition: transform 2s ease;
+}
+.testing-enter-done {
+  display: inline-block;
+}
+
+.testing-appear {
+  transform: scale(0.1);
+}
+.testing-appear-active {
+  transform: scale(1);
+  transition: transform 2s ease;
+}
+.testing-appear-done {
+  display: inline-block;
+}
